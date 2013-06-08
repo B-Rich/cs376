@@ -22,7 +22,7 @@ class ApiController < ApplicationController
 			  content: '<?xml version="1.0" encoding="UTF-8"?>'+'<!DOCTYPE en-note SYSTEM "http://xml.evernote.com/pub/enml2.dtd">'+'<en-note>'+content+'</en-note>',
 			  notebookGuid: notebookGuid 
 			)
-			created_note = note_store.createNote(authtoken, note)
+			created_note = note_store.createNote(session[:authtoken], note)
 		#rescue Evernote::EDAM::Error::EDAMUserException => e
 		#	render(:partial=>"display_error", :locals=>{:error_message=>translate_error(e)})	
 		#end
