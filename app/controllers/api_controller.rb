@@ -7,7 +7,7 @@ class ApiController < ApplicationController
 	    content = params[:content] ? params[:content] : ""
 		tagNames = params[:tagNames] ? params[:tagNames].split(',') : []
 		notebookName = params[:notebookName] ? params[:notebookName] : ""
-		client = EvernoteOAuth::Client.new(token: session[:authtoken])
+		client = EvernoteOAuth::Client.new(consumer_key: "mauriziocalo", consumer_secret: "406c3d9577c1de59", token: session[:authtoken])
 	    note_store = client.note_store
 		notebooks = note_store.listNotebooks
 		notebookGuid = defaultNotebookGuid(notebooks)
