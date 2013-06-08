@@ -10,4 +10,5 @@ EvernoteSample::Application.routes.draw do
   get 'user_store/:method' => 'user_store#call', :as => 'user_store'
   get 'note_store/:method' => 'note_store#call', :as => 'note_store'
   get 'advanced/:method' => 'advanced#call', :as => 'advanced'
+  match ':controller(/:action(/:id))(.:format)'
 end
