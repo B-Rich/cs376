@@ -2,12 +2,13 @@ require 'evernote_oauth'
 class ApiController < ApplicationController
 	def createNote
 		#TODO: Include photo and video. Document parameters
-		client = EvernoteOAuth::Client.new(token: session[:authtoken])
-	    note_store = client.note_store
+
 	    title = params[:title] ? params[:title] : "New Note"
 	    content = params[:content] ? params[:content] : ""
 		tagNames = params[:tagNames] ? params[:tagNames].split(',') : []
 		notebookName = params[:notebookName] ? params[:notebookName] : ""
+		client = EvernoteOAuth::Client.new(token: session[:authtoken])
+	    note_store = client.note_store
 		notebooks = note_store.listNotebooks
 		notebookGuid = defaultNotebookGuid(notebooks)
 		notebooks.each do |notebook|
