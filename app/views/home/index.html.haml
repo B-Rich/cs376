@@ -4,7 +4,7 @@
     %li= "EN_CONSUMER_KEY: #{ENV['EN_CONSUMER_KEY']}"
     %li= "EN_CONSUMER_SECRET: #{ENV['EN_CONSUMER_SECRET']}"
 
-- elsif authtoken
+- if authtoken
   = link_to (session[:dry_run] ? "Allow actual API call" : "Prohibit actual API call"), switch_mode_path
   |
   = link_to 'Logout', logout_path
