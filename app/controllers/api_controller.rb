@@ -36,7 +36,7 @@ class ApiController < ApplicationController
 		puts "***********"
 		puts EvernoteOAuth::Client.to_s
 		puts "*********"
-		client = EvernoteOAuth::Client.new(token: session[:authtoken])
+		client = EvernoteOAuth::Client.new(consumer_key: "mauriziocalo", consumer_secret: "406c3d9577c1de59", token: session[:authtoken])
 	    note_store = client.note_store
     	@notebooks = note_store.listNotebooks
 
