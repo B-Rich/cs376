@@ -1,6 +1,7 @@
 class ApiController < ApplicationController
 	def createNote
 		#TODO: Include photo and video. Document parameters
+		puts "authoken is:" + session[:authtoken]
 		client = EvernoteOAuth::Client.new(token: session[:authtoken])
 	    note_store = client.note_store
 	    title = params[:title] ? params[:title] : "New Note"
