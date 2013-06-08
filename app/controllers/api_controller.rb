@@ -1,7 +1,7 @@
 class ApiController < ApplicationController
 	def createNote
 		#TODO: Include photo and video. Document parameters
-		client = EvernoteOAuth::Client.new(token: authtoken)
+		client = EvernoteOAuth::Client.new(token: session[:authtoken])
 	    note_store = client.note_store
 	    title = params[:title] ? params[:title] : "New Note"
 	    content = params[:content] ? params[:content] : ""
@@ -30,7 +30,7 @@ class ApiController < ApplicationController
 
 	#Returns JSON array of notebook names
 	def listNotebooks
-		client = EvernoteOAuth::Client.new(token: authtoken)
+		client = EvernoteOAuth::Client.new(token: session[:authtoken])
 	    note_store = client.note_store
     	@notebooks = note_store.listNotebooks
 
