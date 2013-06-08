@@ -32,6 +32,10 @@ class ApiController < ApplicationController
 
 	#Returns JSON array of notebook names
 	def listNotebooks
+		puts "authtoken is" + session[:authtoken]
+		puts "***********"
+		puts EvernoteOAuth::Client.to_s
+		puts "*********"
 		client = EvernoteOAuth::Client.new(token: session[:authtoken])
 	    note_store = client.note_store
     	@notebooks = note_store.listNotebooks
