@@ -34,6 +34,5 @@ EvernoteSample::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
-  ENV['EN_CONSUMER_KEY']= "mauriziocalo";
-  ENV['EN_CONSUMER_SECRET'] = "406c3d9577c1de59"
+
 end
