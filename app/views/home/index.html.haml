@@ -12,3 +12,6 @@
   = render 'api_list'
 - else
   = link_to 'Login via Evernote', '/auth/evernote'
+  %ul
+    %li= "EN_CONSUMER_KEY: #{ENV['EN_CONSUMER_KEY']}"
+    %li= "EN_CONSUMER_SECRET: #{ENV['EN_CONSUMER_SECRET']}"
