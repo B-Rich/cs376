@@ -7,12 +7,6 @@ class ApiController < ApplicationController
 	    content = params[:content] ? params[:content] : ""
 		tagNames = params[:tagNames] ? params[:tagNames].split(',') : []
 		notebookName = params[:notebookName] ? params[:notebookName] : ""
-		
-			note = Evernote::EDAM::Type::Note.new(
-			  title: title,
-			  tagNames: tagNames,
-			  content: '<?xml version="1.0" encoding="UTF-8"?>'+'<!DOCTYPE en-note SYSTEM "http://xml.evernote.com/pub/enml2.dtd">'+'<en-note>'+content+'</en-note>',
-			)
 		client = EvernoteOAuth::Client.new(token: session[:authtoken])
 	    note_store = client.note_store
 		notebooks = note_store.listNotebooks
@@ -24,12 +18,12 @@ class ApiController < ApplicationController
 		end
 
 		#begin
-			# note = Evernote::EDAM::Type::Note.new(
-			#   title: title,
-			#   tagNames: tagNames,
-			#   content: '<?xml version="1.0" encoding="UTF-8"?>'+'<!DOCTYPE en-note SYSTEM "http://xml.evernote.com/pub/enml2.dtd">'+'<en-note>'+content+'</en-note>',
-			#   notebookGuid: notebookGuid 
-			# )
+			note = Evernote::EDAM::Type::Note.new(
+			  title: title,
+			  tagNames: tagNames,
+			  content: '<?xml version="1.0" encoding="UTF-8"?>'+'<!DOCTYPE en-note SYSTEM "http://xml.evernote.com/pub/enml2.dtd">'+'<en-note>'+content+'</en-note>',
+			  notebookGuid: notebookGuid 
+			)
 			created_note = note_store.createNote(session[:authtoken], note)
 		#rescue Evernote::EDAM::Error::EDAMUserException => e
 		#	render(:partial=>"display_error", :locals=>{:error_message=>translate_error(e)})	
