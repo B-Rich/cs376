@@ -178,7 +178,7 @@ function dragend(d) {
 			tag = patharc.data;
 			console.log(tag)
 			//Post data to server to save note
-			$.get('/api/createNote', { title:'New AJAX Note', content:note, notebookName:tag } );
+			$.get('/api/createNote', { title:'', content:note, notebookName:tag } );
 
 		}else{
 			alert("no tag selected");
