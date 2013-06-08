@@ -1,0 +1,40 @@
+
+<html>
+    <head>
+        <title>CS376 Project</title>
+		<%= stylesheet_link_tag :styles %>
+		<%= stylesheet_link_tag :normalize %>
+
+		
+		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+		<!-- <meta name="viewport" content="width=device-width"> -->
+		<meta name="viewport" content="width=device-width">
+		<link rel="apple-touch-icon" href="touch-icon-iphone.png" />
+		<link rel="apple-touch-icon" sizes="72x72" href="touch-icon-ipad.png" />
+		<link rel="apple-touch-icon" sizes="114x114" href="touch-icon-iphone-retina.png" />
+		<link rel="apple-touch-icon" sizes="144x144" href="touch-icon-ipad-retina.png" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+    </head>
+    <body>
+		<div id="container">
+		<%if !authtoken%>
+			<a href="auth/evernote"><img src="evernote.jpg" id="loginImg"></img></a>
+
+	    <%else%>
+		<svg id="mainsvg">
+		    <rect />
+				
+
+			    <foreignObject id="formobject">
+					<form name="noteForm" onSubmit="return handleClick()">
+			            <textarea id="note"></textarea><br />
+						<input name="Submit"  type="submit" value="Create!" id="submit"></input>
+			        </form>
+			    </foreignObject>
+			    <%end%>
+		</svg>
+		</div>
+    </body>
+	<%= javascript_include_tag :script%>
+</html>
