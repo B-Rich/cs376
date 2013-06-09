@@ -11,13 +11,13 @@ class ApiController < ApplicationController
 	    note_store = client.note_store
 		notebooks = note_store.listNotebooks
 		notebookGuid = defaultNotebookGuid(notebooks)
-		notebooks.each do |notebook|
+		notebooks.each do |notebook|	
 			if notebook.name == notebookName
 				notebookGuid = notebook.guid
 			end
 		end
 
-		#begin
+		begin
 			note = Evernote::EDAM::Type::Note.new(
 			  title: title,
 			  tagNames: tagNames,
@@ -25,9 +25,9 @@ class ApiController < ApplicationController
 			  notebookGuid: notebookGuid 
 			)
 			created_note = note_store.createNote(session[:authtoken], note)
-		#rescue Evernote::EDAM::Error::EDAMUserException => e
-		#	render(:partial=>"display_error", :locals=>{:error_message=>translate_error(e)})	
-		#end
+		rescue Evernote::EDAM::Error::EDAMUserException => e
+			render(:partial=>"display_error", :locals=>{:error_message=>translate_error(e)})	
+		end
 	end
 
 	#Returns JSON array of notebook names
